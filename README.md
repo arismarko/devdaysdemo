@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grand Screen Cinema
 
-## Getting Started
+An IMAX movie ticket storefront with an embedded Stripe checkout.
 
-First, run the development server:
+## What this demo includes
+
+- Cinematic hero and responsive film programme
+- The Odyssey, Spider-Man, and a Pedro Almodóvar retrospective
+- Ticket quantities, showtimes, ratings, and GBP pricing
+- Lightweight load/stagger animations and custom project theme variables
+- Basket flow with a dedicated checkout page
+- Stripe Checkout Session integration via server API route
+
+## Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key files
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx`: cinema hero, programme, and ticket selection
+- `app/layout.tsx`: project metadata and font setup
+- `app/globals.css`: custom theme colors, typography, and animation styles
+- `app/checkout/page.tsx`: checkout summary and embedded Stripe widget
+- `app/api/checkout-session/route.ts`: creates Stripe checkout sessions
+- `lib/products.ts`: shared movie programme used by UI and Stripe route
 
-## Learn More
+## Stripe setup
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+STRIPE_SECRET_KEY=sk_test_your_key_here
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then run `npm run dev`, add tickets, and open the secure embedded checkout.

@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #090a0d;
+  --foreground: #f4f0e8;
+  --cinema-black: #090a0d;
+  --cinema-card: #14161b;
+  --cinema-paper: #f4f0e8;
+  --cinema-red: #ed2d34;
+  --cinema-border: #d5d0c7;
+  --cinema-muted: #62646a;
+  --cinema-soft: #ded9cf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.cinema-bg {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(237, 45, 52, 0.15), transparent 28%),
+    linear-gradient(160deg, #101117 0%, #07080a 55%, #111217 100%);
+}
+
+.hero-marquee {
+  background:
+    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.85) 100%),
+    radial-gradient(circle at 70% 28%, #f07a35 0%, #b51f2d 18%, transparent 47%),
+    linear-gradient(145deg, #1f2330 0%, #08090b 70%);
+}
+
+.hero-marquee::before {
+  position: absolute;
+  inset: -25%;
+  content: "";
+  background: repeating-radial-gradient(ellipse at center, transparent 0 20px, rgba(255, 255, 255, 0.06) 22px 23px);
+  transform: rotate(-18deg);
+}
+
+.reveal {
+  animation: rise 550ms ease-out both;
+}
+
+.stagger {
+  opacity: 0;
+  animation: rise 600ms ease-out forwards;
+}
+
+.stagger:nth-child(2) { animation-delay: 80ms; }
+.stagger:nth-child(3) { animation-delay: 160ms; }
+.stagger:nth-child(4) { animation-delay: 240ms; }
+.stagger:nth-child(5) { animation-delay: 320ms; }
+.stagger:nth-child(6) { animation-delay: 400ms; }
+
+.movie-poster {
+  background-color: #08090b;
+  background-image: linear-gradient(145deg, #202127, #08090b);
+}
+
+.movie-poster-odyssey { background-image: radial-gradient(circle at 75% 20%, #e85d2a, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+.movie-poster-spider-man { background-image: radial-gradient(circle at 75% 20%, #e11d48, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+.movie-poster-room { background-image: radial-gradient(circle at 75% 20%, #f4b942, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+.movie-poster-glory { background-image: radial-gradient(circle at 75% 20%, #16a085, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+.movie-poster-volver { background-image: radial-gradient(circle at 75% 20%, #8b5cf6, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+.movie-poster-mother { background-image: radial-gradient(circle at 75% 20%, #2563eb, transparent 35%), linear-gradient(145deg, #202127, #08090b); }
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
